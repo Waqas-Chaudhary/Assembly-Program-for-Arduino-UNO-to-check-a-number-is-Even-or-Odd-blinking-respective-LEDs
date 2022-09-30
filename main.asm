@@ -1,0 +1,22 @@
+  CBI PORTB,0
+  CBI PORTB,1
+  _start:
+  SBI DDRB, 0
+  SBI DDRC, 1
+  LDI R16,7
+  LDI R17,5
+  ADD R16,R17
+  sbrc R16,1
+  rjmp ODD
+  call EVEN
+  RET
+  EVEN:
+LDI R20,1;EVEN
+CBI PORTB,1
+SBI PORTB,0
+rjmp _start
+  ODD:
+LDI R20,2;ODD
+SBI PORTB,1
+CBI PORTB,0
+rjmp _start
